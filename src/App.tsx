@@ -57,7 +57,7 @@ function App() {
           <a href="#contact" onClick={() => setMenuOpen(false)}>Kontak <ArrowUpRight size={14} /></a>
         </nav>
         <span className="header-note"><i /> Personal space, endless possibilities.</span>
-        <button className="menu-button" aria-label="Buka navigasi" onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X /> : <Menu />}</button>
+        <button className="menu-button" aria-label={menuOpen ? 'Tutup navigasi' : 'Buka navigasi'} aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X /> : <Menu />}</button>
       </header>
 
       <main>
@@ -84,7 +84,7 @@ function App() {
           </div>
           <div className="object-label"><span>OBJECT — 001</span><span>Different by nature.</span></div>
           <div className="scene-controls" aria-label="Pengaturan objek 3D">
-            {['#ef6249', '#9db886', '#7e9ebd'].map((swatch) => <button key={swatch} className={color === swatch ? 'swatch selected' : 'swatch'} style={{ backgroundColor: swatch }} aria-label="Ubah warna objek" onClick={() => setColor(swatch)} />)}
+            {['#ef6249', '#9db886', '#7e9ebd'].map((swatch, index) => <button key={swatch} className={color === swatch ? 'swatch selected' : 'swatch'} style={{ backgroundColor: swatch }} aria-label={`Warna ${['coral', 'hijau', 'biru'][index]}`} title={`Warna ${['coral', 'hijau', 'biru'][index]}`} aria-pressed={color === swatch} onClick={() => setColor(swatch)} />)}
             <i />
             <button aria-label={playing ? 'Jeda animasi' : 'Putar animasi'} onClick={() => setPlaying(!playing)}>{playing ? <Pause size={15} /> : <Play size={15} />}</button>
             <button aria-label="Reset sudut objek" onClick={() => setResetKey(resetKey + 1)}><RotateCcw size={15} /></button>
